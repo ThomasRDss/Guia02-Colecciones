@@ -18,37 +18,33 @@ public class Artista {
         canciones.add(cancionDeArtista);
     }
 
-    public boolean esFanDestacado(Usuario supuestoUsuarioDestacado) {
-        boolean esDestacado = false;
-        final int LIKES_MINIMOS = (int) canciones.size() / 2;
+    public boolean esFanDestacado(Usuario supuestoUsuarioDestacado) {       
+        final int LIKES_MINIMOS = (int) (canciones.size() + 1) / 2;
         int i = 0;
         int cantidadDeLikes = 0;
-        while (i < canciones.size() && esDestacado == false) {
+        while (i < canciones.size() && cantidadDeLikes < LIKES_MINIMOS) {
             if (canciones.get(i).buscarUsuarioQueLikeo(supuestoUsuarioDestacado)) {
-                cantidadDeLikes++;
-            }
-            if (cantidadDeLikes >= LIKES_MINIMOS) {
-                esDestacado = true;
-            }
+                cantidadDeLikes++;                
+            } 
             i++;
         }
-        return esDestacado;
+        return cantidadDeLikes >= LIKES_MINIMOS;
     }
 
-    public String[] primeras5Canciones() {
+    public Cancion[] primeras5Canciones() {
         int CANTIDAD_DE_CANCIONES = 5;
         if(canciones.size() < CANTIDAD_DE_CANCIONES){
             CANTIDAD_DE_CANCIONES = canciones.size();
         }
-        String[] primerasCincoCanciones = new String[CANTIDAD_DE_CANCIONES];
+        Cancion[] primerasCincoCanciones = new Cancion[CANTIDAD_DE_CANCIONES];
         for (int i = 0; i < CANTIDAD_DE_CANCIONES; i++) {
            Cancion cancionActual = canciones.get(i);
-            primerasCincoCanciones[i] = cancionActual.getNombre();
+            primerasCincoCanciones[i] = cancionActual;
         }
         return primerasCincoCanciones;
     }
 
-    public String mostrarDuracionPromedio() {
+    public void mostrarDuracionPromedio() { //hacerlo VOID
         double promedioEnSegundos;
         double acumulador = 0;
         final int VALOR_MINUTO_EN_SEG = 60;
@@ -57,9 +53,9 @@ public class Artista {
         }
         promedioEnSegundos = acumulador / canciones.size();
         int minutos = (int) promedioEnSegundos / VALOR_MINUTO_EN_SEG;
-        int segundos = (int) Math.round(promedioEnSegundos % VALOR_MINUTO_EN_SEG);
+        int segundos = (int) promedioEnSegundos % VALOR_MINUTO_EN_SEG;
 
-        return minutos + " minutos " + " " + segundos + " segundos";
+        System.out.println(minutos + " minutos " + " " + segundos + " segundos"); 
     }
 
     public void borrarLikeDeUsuario(Usuario usuario){
@@ -72,5 +68,11 @@ public class Artista {
         return nombre;
     }
 
+    @Override
+    public String toString() {
+        return "Artista{" + "ID=" + ID + ", nombre=" + nombre + ", canciones=" + canciones + '}';
+    }
+
+    
 
 }

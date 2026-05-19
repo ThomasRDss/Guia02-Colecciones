@@ -45,4 +45,11 @@ public class Clonify {
             artista.borrarLikeDeUsuario(usuario);
         }
     }
+
+    @Override
+    public String toString() {
+        return "Clonify{" + "artistas=" + artistas + ", usuarios=" + usuarios + '}';
+    }
+    
+    
 }

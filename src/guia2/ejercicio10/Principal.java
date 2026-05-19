@@ -40,7 +40,7 @@ public class Principal {
 
         // B) Promedio de duración
         System.out.println("\n--- PRUEBA B: Promedio de Duración ---");
-        System.out.println("Promedio de " + daftPunk.getNombre() + ": " + daftPunk.mostrarDuracionPromedio());
+        daftPunk.mostrarDuracionPromedio();
 
         // C) Fan Destacado (Thomas = Sí / MusicaFan99 = No)
         System.out.println("\n--- PRUEBA C: Fan Destacado ---");
@@ -49,7 +49,9 @@ public class Principal {
 
         // D) Primeras 5 Canciones (Daft Punk tiene 4, debe devolver 4 sin crashear)
         System.out.println("\n--- PRUEBA D: Primeras 5 canciones ---");
-        System.out.println("Canciones disponibles: " + daftPunk.primeras5Canciones());
+        for (int i = 0; i < daftPunk.primeras5Canciones().length; i++) {
+            System.out.println("Canciones disponibles: " + daftPunk.primeras5Canciones());
+        }
 
         // E) Borrar Usuario
         System.out.println("\n--- PRUEBA E: Borrar Usuario (Borrando a ThomasRodas) ---");

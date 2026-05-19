@@ -45,4 +45,11 @@ public class Cancion {
         usuariosQueDieronLike.remove(usuario);
     }
 
+    @Override
+    public String toString() {
+        return "Cancion{" + "ID=" + ID + ", nombre=" + nombre + ", duracionSEG=" + duracionSEG + ", usuariosQueDieronLike=" + usuariosQueDieronLike + '}';
+    }
+
+    
+    
 }
