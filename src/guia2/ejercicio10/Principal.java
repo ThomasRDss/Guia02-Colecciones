@@ -49,8 +49,9 @@ public class Principal {
 
         // D) Primeras 5 Canciones (Daft Punk tiene 4, debe devolver 4 sin crashear)
         System.out.println("\n--- PRUEBA D: Primeras 5 canciones ---");
+        Cancion[] primeras5 = daftPunk.primeras5Canciones();
         for (int i = 0; i < daftPunk.primeras5Canciones().length; i++) {
-            System.out.println("Canciones disponibles: " + daftPunk.primeras5Canciones());
+            System.out.println("Canciones disponibles: " + primeras5[i]);
         }
 
         // E) Borrar Usuario
